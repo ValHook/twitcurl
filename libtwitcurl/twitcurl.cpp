@@ -5,23 +5,23 @@
 #include "urlencode.h"
 
 /*++
-* @method: twitCurl::twitCurl
-*
-* @description: constructor
-*
-* @input: none
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::twitCurl
+ *
+ * @description: constructor
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ *--*/
 twitCurl::twitCurl():
-m_curlHandle( NULL ),
-m_curlProxyParamsSet( false ),
-m_curlLoginParamsSet( false ),
-m_curlCallbackParamsSet( false ),
-m_curlInterfaseParamSet ( false ),
-m_eApiFormatType( twitCurlTypes::eTwitCurlApiFormatJson ),
-m_eProtocolType( twitCurlTypes::eTwitCurlProtocolHttps )
+        m_curlHandle( NULL ),
+        m_curlProxyParamsSet( false ),
+        m_curlLoginParamsSet( false ),
+        m_curlCallbackParamsSet( false ),
+        m_curlInterfaseParamSet ( false ),
+        m_eApiFormatType( twitCurlTypes::eTwitCurlApiFormatJson ),
+        m_eProtocolType( twitCurlTypes::eTwitCurlProtocolHttps )
 {
     /* Alloc memory for cURL error responses */
     m_errorBuffer = (char*)malloc( twitCurlDefaults::TWITCURL_DEFAULT_BUFFSIZE );
@@ -40,15 +40,15 @@ m_eProtocolType( twitCurlTypes::eTwitCurlProtocolHttps )
 }
 
 /*++
-* @method: twitCurl::~twitCurl
-*
-* @description: destructor
-*
-* @input: none
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::~twitCurl
+ *
+ * @description: destructor
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ *--*/
 twitCurl::~twitCurl()
 {
     /* Cleanup cURL */
@@ -65,15 +65,15 @@ twitCurl::~twitCurl()
 }
 
 /*++
-* @method: twitCurl::clone
-*
-* @description: creates a clone of twitcurl object
-*
-* @input: none
-*
-* @output: cloned object
-*
-*--*/
+ * @method: twitCurl::clone
+ *
+ * @description: creates a clone of twitcurl object
+ *
+ * @input: none
+ *
+ * @output: cloned object
+ *
+ *--*/
 twitCurl* twitCurl::clone()
 {
     twitCurl *cloneObj = new twitCurl();
@@ -95,60 +95,60 @@ twitCurl* twitCurl::clone()
 }
 
 /*++
-* @method: twitCurl::isCurlInit
-*
-* @description: method to check if cURL is initialized properly
-*
-* @input: none
-*
-* @output: true if cURL is intialized, otherwise false
-*
-*--*/
+ * @method: twitCurl::isCurlInit
+ *
+ * @description: method to check if cURL is initialized properly
+ *
+ * @input: none
+ *
+ * @output: true if cURL is intialized, otherwise false
+ *
+ *--*/
 bool twitCurl::isCurlInit()
 {
     return ( NULL != m_curlHandle ) ? true : false;
 }
 
 /*++
-* @method: twitCurl::getTwitterUsername
-*
-* @description: method to get stored Twitter username
-*
-* @input: none
-*
-* @output: twitter username
-*
-*--*/
+ * @method: twitCurl::getTwitterUsername
+ *
+ * @description: method to get stored Twitter username
+ *
+ * @input: none
+ *
+ * @output: twitter username
+ *
+ *--*/
 std::string& twitCurl::getTwitterUsername()
 {
     return m_twitterUsername;
 }
 
 /*++
-* @method: twitCurl::getTwitterPassword
-*
-* @description: method to get stored Twitter password
-*
-* @input: none
-*
-* @output: twitter password
-*
-*--*/
+ * @method: twitCurl::getTwitterPassword
+ *
+ * @description: method to get stored Twitter password
+ *
+ * @input: none
+ *
+ * @output: twitter password
+ *
+ *--*/
 std::string& twitCurl::getTwitterPassword()
 {
     return m_twitterPassword;
 }
 
 /*++
-* @method: twitCurl::setTwitterUsername
-*
-* @description: method to set username
-*
-* @input: userName
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setTwitterUsername
+ *
+ * @description: method to set username
+ *
+ * @input: userName
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setTwitterUsername( const std::string& userName )
 {
     if( userName.length() )
@@ -159,15 +159,15 @@ void twitCurl::setTwitterUsername( const std::string& userName )
 }
 
 /*++
-* @method: twitCurl::setTwitterPassword
-*
-* @description: method to set password
-*
-* @input: passWord
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setTwitterPassword
+ *
+ * @description: method to set password
+ *
+ * @input: passWord
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setTwitterPassword( const std::string& passWord )
 {
     if( passWord.length() )
@@ -178,75 +178,75 @@ void twitCurl::setTwitterPassword( const std::string& passWord )
 }
 
 /*++
-* @method: twitCurl::getProxyServerIp
-*
-* @description: method to get proxy server IP address
-*
-* @input: none
-*
-* @output: proxy server IP address
-*
-*--*/
+ * @method: twitCurl::getProxyServerIp
+ *
+ * @description: method to get proxy server IP address
+ *
+ * @input: none
+ *
+ * @output: proxy server IP address
+ *
+ *--*/
 std::string& twitCurl::getProxyServerIp()
 {
     return m_proxyServerIp;
 }
 
 /*++
-* @method: twitCurl::getProxyServerPort
-*
-* @description: method to get proxy server port
-*
-* @input: none
-*
-* @output: proxy server port
-*
-*--*/
+ * @method: twitCurl::getProxyServerPort
+ *
+ * @description: method to get proxy server port
+ *
+ * @input: none
+ *
+ * @output: proxy server port
+ *
+ *--*/
 std::string& twitCurl::getProxyServerPort()
 {
     return m_proxyServerPort;
 }
 
 /*++
-* @method: twitCurl::getProxyUserName
-*
-* @description: method to get proxy user name
-*
-* @input: none
-*
-* @output: proxy server user name
-*
-*--*/
+ * @method: twitCurl::getProxyUserName
+ *
+ * @description: method to get proxy user name
+ *
+ * @input: none
+ *
+ * @output: proxy server user name
+ *
+ *--*/
 std::string& twitCurl::getProxyUserName()
 {
     return m_proxyUserName;
 }
 
 /*++
-* @method: twitCurl::getProxyPassword
-*
-* @description: method to get proxy server password
-*
-* @input: none
-*
-* @output: proxy server password
-*
-*--*/
+ * @method: twitCurl::getProxyPassword
+ *
+ * @description: method to get proxy server password
+ *
+ * @input: none
+ *
+ * @output: proxy server password
+ *
+ *--*/
 std::string& twitCurl::getProxyPassword()
 {
     return m_proxyPassword;
 }
 
 /*++
-* @method: twitCurl::getInterface
-*
-* @description: method to get proxy server password
-*
-* @input: none
-*
-* @output: proxy server password
-*
-*--*/
+ * @method: twitCurl::getInterface
+ *
+ * @description: method to get proxy server password
+ *
+ * @input: none
+ *
+ * @output: proxy server password
+ *
+ *--*/
 std::string& twitCurl::getInterface()
 {
     return m_Interface;
@@ -254,15 +254,15 @@ std::string& twitCurl::getInterface()
 
 
 /*++
-* @method: twitCurl::setProxyServerIp
-*
-* @description: method to set proxy server IP address
-*
-* @input: proxyServerIp
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setProxyServerIp
+ *
+ * @description: method to set proxy server IP address
+ *
+ * @input: proxyServerIp
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setProxyServerIp( const std::string& proxyServerIp )
 {
     if( proxyServerIp.length() )
@@ -277,15 +277,15 @@ void twitCurl::setProxyServerIp( const std::string& proxyServerIp )
 }
 
 /*++
-* @method: twitCurl::setProxyServerPort
-*
-* @description: method to set proxy server port
-*
-* @input: proxyServerPort
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setProxyServerPort
+ *
+ * @description: method to set proxy server port
+ *
+ * @input: proxyServerPort
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setProxyServerPort( const std::string& proxyServerPort )
 {
     if( proxyServerPort.length() )
@@ -300,15 +300,15 @@ void twitCurl::setProxyServerPort( const std::string& proxyServerPort )
 }
 
 /*++
-* @method: twitCurl::setProxyUserName
-*
-* @description: method to set proxy server username
-*
-* @input: proxyUserName
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setProxyUserName
+ *
+ * @description: method to set proxy server username
+ *
+ * @input: proxyUserName
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setProxyUserName( const std::string& proxyUserName )
 {
     if( proxyUserName.length() )
@@ -323,15 +323,15 @@ void twitCurl::setProxyUserName( const std::string& proxyUserName )
 }
 
 /*++
-* @method: twitCurl::setProxyPassword
-*
-* @description: method to set proxy server password
-*
-* @input: proxyPassword
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setProxyPassword
+ *
+ * @description: method to set proxy server password
+ *
+ * @input: proxyPassword
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setProxyPassword( const std::string& proxyPassword )
 {
     if( proxyPassword.length() )
@@ -346,15 +346,15 @@ void twitCurl::setProxyPassword( const std::string& proxyPassword )
 }
 
 /*++
-* @method: twitCurl::setInterface
-*
-* @description: method to set proxy server IP address
-*
-* @input: Interface
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::setInterface
+ *
+ * @description: method to set proxy server IP address
+ *
+ * @input: Interface
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::setInterface( const std::string& Interface )
 {
     if( Interface.length() )
@@ -368,19 +368,19 @@ void twitCurl::setInterface( const std::string& Interface )
     }
 }
 /*++
-* @method: twitCurl::search
-*
-* @description: method to return tweets that match a specified query.
-*
-* @input: searchQuery - search query in string format
-*         resultCount - optional search result count
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-* @note: Only ATOM and JSON format supported.
-*
-*--*/
+ * @method: twitCurl::search
+ *
+ * @description: method to return tweets that match a specified query.
+ *
+ * @input: searchQuery - search query in string format
+ *         resultCount - optional search result count
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ * @note: Only ATOM and JSON format supported.
+ *
+ *--*/
 bool twitCurl::search( const std::string& searchQuery, const std::string resultCount )
 {
     /* Prepare URL */
@@ -402,17 +402,17 @@ bool twitCurl::search( const std::string& searchQuery, const std::string resultC
 }
 
 /*++
-* @method: twitCurl::statusUpdate
-*
-* @description: method to update new status message in twitter profile
-*
-* @input: newStatus - status message text
-*         inReplyToStatusId - optional status id to we're replying to
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::statusUpdate
+ *
+ * @description: method to update new status message in twitter profile
+ *
+ * @input: newStatus - status message text
+ *         inReplyToStatusId - optional status id to we're replying to
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::statusUpdate( const std::string& newStatus, const std::string inReplyToStatusId )
 {
     if( newStatus.empty() )
@@ -439,16 +439,16 @@ bool twitCurl::statusUpdate( const std::string& newStatus, const std::string inR
 }
 
 /*++
-* @method: twitCurl::statusShowById
-*
-* @description: method to get a status message by its id
-*
-* @input: statusId - a number in std::string format
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::statusShowById
+ *
+ * @description: method to get a status message by its id
+ *
+ * @input: statusId - a number in std::string format
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::statusShowById( const std::string& statusId )
 {
     if( statusId.empty() )
@@ -476,33 +476,32 @@ bool twitCurl::statusShowById( const std::string& statusId )
 *          response by twitter. Use getLastWebResponse() for that.
 *
 *--*/
-bool twitCurl::statusDestroyById( const std::string& statusId )
-{
-    if( statusId.empty() )
-    {
+bool twitCurl::statusDestroyById( const std::string& statusId ) {
+    if(statusId.empty())
         return false;
-    }
 
-    /* Prepare URL */
-    std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                           twitterDefaults::TWITCURL_STATUDESTROY_URL + statusId +
-                           twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
+    std::string msgToPost = "id="+statusId;
 
-    /* Perform DELETE */
-    return performDelete( buildUrl );
+    std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType]
+                           + twitterDefaults::TWITCURL_STATUDESTROY_URL
+                           + statusId
+                           + twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
+
+    return performPost(buildUrl, msgToPost);
 }
 
+
 /*++
-* @method: twitCurl::retweetById
-*
-* @description: method to RETWEET a status message by its id
-*
-* @input: statusId - a number in std::string format
-*
-* @output: true if RETWEET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::retweetById
+ *
+ * @description: method to RETWEET a status message by its id
+ *
+ * @input: statusId - a number in std::string format
+ *
+ * @output: true if RETWEET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::retweetById( const std::string& statusId )
 {
     if( statusId.empty() )
@@ -524,16 +523,16 @@ bool twitCurl::retweetById( const std::string& statusId )
 }
 
 /*++
-* @method: twitCurl::timelineHomeGet
-*
-* @description: method to get home timeline
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::timelineHomeGet
+ *
+ * @description: method to get home timeline
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::timelineHomeGet( const std::string sinceId )
 {
     std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
@@ -549,16 +548,16 @@ bool twitCurl::timelineHomeGet( const std::string sinceId )
 }
 
 /*++
-* @method: twitCurl::timelinePublicGet
-*
-* @description: method to get public timeline
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::timelinePublicGet
+ *
+ * @description: method to get public timeline
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::timelinePublicGet()
 {
     /* Perform GET */
@@ -568,16 +567,16 @@ bool twitCurl::timelinePublicGet()
 }
 
 /*++
-* @method: twitCurl::featuredUsersGet
-*
-* @description: method to get featured users
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::featuredUsersGet
+ *
+ * @description: method to get featured users
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::featuredUsersGet()
 {
     /* Perform GET */
@@ -587,16 +586,16 @@ bool twitCurl::featuredUsersGet()
 }
 
 /*++
-* @method: twitCurl::timelineFriendsGet
-*
-* @description: method to get friends timeline
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::timelineFriendsGet
+ *
+ * @description: method to get friends timeline
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::timelineFriendsGet()
 {
     /* Perform GET */
@@ -606,16 +605,16 @@ bool twitCurl::timelineFriendsGet()
 }
 
 /*++
-* @method: twitCurl::mentionsGet
-*
-* @description: method to get mentions
-*
-* @input: sinceId - String specifying since id parameter
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::mentionsGet
+ *
+ * @description: method to get mentions
+ *
+ * @input: sinceId - String specifying since id parameter
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::mentionsGet( const std::string sinceId )
 {
     std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
@@ -631,19 +630,19 @@ bool twitCurl::mentionsGet( const std::string sinceId )
 }
 
 /*++
-* @method: twitCurl::timelineUserGet
-*
-* @description: method to get mentions
-*
-* @input: trimUser - Trim user name if true
-*         tweetCount - Number of tweets to get. Max 200.
-*         userInfo - screen name or user id in string format,
-*         isUserId - true if userInfo contains an id
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::timelineUserGet
+ *
+ * @description: method to get mentions
+ *
+ * @input: trimUser - Trim user name if true
+ *         tweetCount - Number of tweets to get. Max 200.
+ *         userInfo - screen name or user id in string format,
+ *         isUserId - true if userInfo contains an id
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::timelineUserGet( const bool trimUser,
                                 const bool includeRetweets,
                                 const unsigned int tweetCount,
@@ -654,8 +653,8 @@ bool twitCurl::timelineUserGet( const bool trimUser,
     std::string buildUrl;
 
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_USERTIMELINE_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_USERTIMELINE_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     if( userInfo.empty() )
@@ -665,7 +664,7 @@ bool twitCurl::timelineUserGet( const bool trimUser,
 
     if( tweetCount )
     {
-		std::stringstream tmpStrm;
+        std::stringstream tmpStrm;
         if( tweetCount < twitCurlDefaults::MAX_TIMELINE_TWEET_COUNT )
         {
             tmpStrm << twitCurlDefaults::TWITCURL_URL_SEP_AMP + twitCurlDefaults::TWITCURL_COUNT << tweetCount;
@@ -693,17 +692,17 @@ bool twitCurl::timelineUserGet( const bool trimUser,
 }
 
 /*++
-* @method: twitCurl::userLookup
-*
-* @description: method to get a number of user's profiles
-*
-* @input: userInfo - vector of screen names or user ids
-*         isUserId - true if userInfo contains an id
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::userLookup
+ *
+ * @description: method to get a number of user's profiles
+ *
+ * @input: userInfo - vector of screen names or user ids
+ *         isUserId - true if userInfo contains an id
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::userLookup( const std::vector<std::string> &userInfo, const bool isUserId )
 {
     if( userInfo.empty() )
@@ -721,26 +720,27 @@ bool twitCurl::userLookup( const std::vector<std::string> &userInfo, const bool 
     userIds = ( isUserId ? twitCurlDefaults::TWITCURL_USERID : twitCurlDefaults::TWITCURL_SCREENNAME ) +
               urlencode( userIds );
 
-    std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] + 
-                           twitterDefaults::TWITCURL_LOOKUPUSERS_URL + 
+    std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
+                           twitterDefaults::TWITCURL_LOOKUPUSERS_URL +
                            twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
 
     /* Perform POST */
     return performPost( buildUrl, userIds);
 }
 
+
 /*++
-* @method: twitCurl::userGet
-*
-* @description: method to get a user's profile
-*
-* @input: userInfo - screen name or user id in string format,
-*         isUserId - true if userInfo contains an id
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::userGet
+ *
+ * @description: method to get a user's profile
+ *
+ * @input: userInfo - screen name or user id in string format,
+ *         isUserId - true if userInfo contains an id
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::userGet( const std::string& userInfo, const bool isUserId )
 {
     if( userInfo.empty() )
@@ -751,8 +751,8 @@ bool twitCurl::userGet( const std::string& userInfo, const bool isUserId )
     /* Set URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_SHOWUSERS_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_SHOWUSERS_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Perform GET */
@@ -760,24 +760,24 @@ bool twitCurl::userGet( const std::string& userInfo, const bool isUserId )
 }
 
 /*++
-* @method: twitCurl::friendsGet
-*
-* @description: method to get a user's friends
-*
-* @input: userInfo - screen name or user id in string format,
-*         isUserId - true if userInfo contains an id
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::friendsGet
+ *
+ * @description: method to get a user's friends
+ *
+ * @input: userInfo - screen name or user id in string format,
+ *         isUserId - true if userInfo contains an id
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::friendsGet( const std::string userInfo, const bool isUserId )
 {
     /* Set URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_SHOWFRIENDS_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_SHOWFRIENDS_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Perform GET */
@@ -785,24 +785,24 @@ bool twitCurl::friendsGet( const std::string userInfo, const bool isUserId )
 }
 
 /*++
-* @method: twitCurl::followersGet
-*
-* @description: method to get a user's followers
-*
-* @input: userInfo - screen name or user id in string format,
-*         isUserId - true if userInfo contains an id
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::followersGet
+ *
+ * @description: method to get a user's followers
+ *
+ * @input: userInfo - screen name or user id in string format,
+ *         isUserId - true if userInfo contains an id
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::followersGet( const std::string userInfo, const bool isUserId )
 {
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_SHOWFOLLOWERS_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_SHOWFOLLOWERS_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Perform GET */
@@ -810,16 +810,16 @@ bool twitCurl::followersGet( const std::string userInfo, const bool isUserId )
 }
 
 /*++
-* @method: twitCurl::directMessageGet
-*
-* @description: method to get direct messages
-*
-* @input: since id
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::directMessageGet
+ *
+ * @description: method to get direct messages
+ *
+ * @input: since id
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::directMessageGet( const std::string sinceId )
 {
     std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
@@ -836,18 +836,18 @@ bool twitCurl::directMessageGet( const std::string sinceId )
 }
 
 /*++
-* @method: twitCurl::directMessageSend
-*
-* @description: method to send direct message to a user
-*
-* @input: userInfo - screen name or user id of a user to whom message needs to be sent,
-*         dMsg - message
-*         isUserId - true if userInfo contains target user's id
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::directMessageSend
+ *
+ * @description: method to send direct message to a user
+ *
+ * @input: userInfo - screen name or user id of a user to whom message needs to be sent,
+ *         dMsg - message
+ *         isUserId - true if userInfo contains target user's id
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::directMessageSend( const std::string& userInfo, const std::string& dMsg, const bool isUserId )
 {
     if( userInfo.empty() || dMsg.empty() )
@@ -861,8 +861,8 @@ bool twitCurl::directMessageSend( const std::string& userInfo, const std::string
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_DIRECTMESSAGENEW_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_DIRECTMESSAGENEW_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Perform POST */
@@ -870,16 +870,16 @@ bool twitCurl::directMessageSend( const std::string& userInfo, const std::string
 }
 
 /*++
-* @method: twitCurl::directMessageGetSent
-*
-* @description: method to get sent direct messages
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::directMessageGetSent
+ *
+ * @description: method to get sent direct messages
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::directMessageGetSent()
 {
     /* Perform GET */
@@ -889,16 +889,16 @@ bool twitCurl::directMessageGetSent()
 }
 
 /*++
-* @method: twitCurl::directMessageDestroyById
-*
-* @description: method to delete direct messages by its id
-*
-* @input: dMsgId - id of direct message in string format
-*
-* @output: true if DELETE is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::directMessageDestroyById
+ *
+ * @description: method to delete direct messages by its id
+ *
+ * @input: dMsgId - id of direct message in string format
+ *
+ * @output: true if DELETE is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::directMessageDestroyById( const std::string& dMsgId )
 {
     if( dMsgId.empty() )
@@ -916,17 +916,17 @@ bool twitCurl::directMessageDestroyById( const std::string& dMsgId )
 }
 
 /*++
-* @method: twitCurl::friendshipCreate
-*
-* @description: method to add a twitter user as friend (follow a user)
-*
-* @input: userInfo - user id or screen name of a user
-*         isUserId - true if userInfo contains a user id instead of screen name
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::friendshipCreate
+ *
+ * @description: method to add a twitter user as friend (follow a user)
+ *
+ * @input: userInfo - user id or screen name of a user
+ *         isUserId - true if userInfo contains a user id instead of screen name
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::friendshipCreate( const std::string& userInfo, const bool isUserId )
 {
     if( userInfo.empty() )
@@ -937,8 +937,8 @@ bool twitCurl::friendshipCreate( const std::string& userInfo, const bool isUserI
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_FRIENDSHIPSCREATE_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_FRIENDSHIPSCREATE_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Send some dummy data in POST */
@@ -950,17 +950,17 @@ bool twitCurl::friendshipCreate( const std::string& userInfo, const bool isUserI
 }
 
 /*++
-* @method: twitCurl::friendshipDestroy
-*
-* @description: method to delete a twitter user from friend list (unfollow a user)
-*
-* @input: userInfo - user id or screen name of a user
-*         isUserId - true if userInfo contains a user id instead of screen name
-*
-* @output: true if DELETE is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::friendshipDestroy
+ *
+ * @description: method to delete a twitter user from friend list (unfollow a user)
+ *
+ * @input: userInfo - user id or screen name of a user
+ *         isUserId - true if userInfo contains a user id instead of screen name
+ *
+ * @output: true if DELETE is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::friendshipDestroy( const std::string& userInfo, const bool isUserId )
 {
     if( userInfo.empty() )
@@ -971,8 +971,8 @@ bool twitCurl::friendshipDestroy( const std::string& userInfo, const bool isUser
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_FRIENDSHIPSDESTROY_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_FRIENDSHIPSDESTROY_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     /* Perform DELETE */
@@ -980,17 +980,17 @@ bool twitCurl::friendshipDestroy( const std::string& userInfo, const bool isUser
 }
 
 /*++
-* @method: twitCurl::friendshipShow
-*
-* @description: method to show all friends
-*
-* @input: userInfo - user id or screen name of a user of whom friends need to be shown
-*         isUserId - true if userInfo contains a user id instead of screen name
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::friendshipShow
+ *
+ * @description: method to show all friends
+ *
+ * @input: userInfo - user id or screen name of a user of whom friends need to be shown
+ *         isUserId - true if userInfo contains a user id instead of screen name
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::friendshipShow( const std::string& userInfo, const bool isUserId )
 {
     /* Prepare URL */
@@ -1017,26 +1017,26 @@ bool twitCurl::friendshipShow( const std::string& userInfo, const bool isUserId 
 }
 
 /*++
-* @method: twitCurl::friendsIdsGet
-*
-* @description: method to show IDs of all friends of a twitter user
-*
-* @input: userInfo - user id or screen name of a user
-*         isUserId - true if userInfo contains a user id instead of screen name
-*         nextCursor - next cursor string returned from a previous call
-*                      to this API, otherwise an empty string
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::friendsIdsGet
+ *
+ * @description: method to show IDs of all friends of a twitter user
+ *
+ * @input: userInfo - user id or screen name of a user
+ *         isUserId - true if userInfo contains a user id instead of screen name
+ *         nextCursor - next cursor string returned from a previous call
+ *                      to this API, otherwise an empty string
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::friendsIdsGet( const std::string& nextCursor, const std::string& userInfo, const bool isUserId )
 {
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_FRIENDSIDS_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_FRIENDSIDS_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     if( buildUrl.length() && nextCursor.length() )
@@ -1051,26 +1051,26 @@ bool twitCurl::friendsIdsGet( const std::string& nextCursor, const std::string& 
 }
 
 /*++
-* @method: twitCurl::followersIdsGet
-*
-* @description: method to show IDs of all followers of a twitter user
-*
-* @input: userInfo - user id or screen name of a user
-*         isUserId - true if userInfo contains a user id instead of screen name
-*         nextCursor - next cursor string returned from a previous call
-*                      to this API, otherwise an empty string
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::followersIdsGet
+ *
+ * @description: method to show IDs of all followers of a twitter user
+ *
+ * @input: userInfo - user id or screen name of a user
+ *         isUserId - true if userInfo contains a user id instead of screen name
+ *         nextCursor - next cursor string returned from a previous call
+ *                      to this API, otherwise an empty string
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::followersIdsGet( const std::string& nextCursor, const std::string& userInfo, const bool isUserId )
 {
     /* Prepare URL */
     std::string buildUrl;
     utilMakeUrlForUser( buildUrl, twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                        twitterDefaults::TWITCURL_FOLLOWERSIDS_URL +
-                        twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
+                                  twitterDefaults::TWITCURL_FOLLOWERSIDS_URL +
+                                  twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType],
                         userInfo, isUserId );
 
     if( buildUrl.length() && nextCursor.length() )
@@ -1085,16 +1085,16 @@ bool twitCurl::followersIdsGet( const std::string& nextCursor, const std::string
 }
 
 /*++
-* @method: twitCurl::accountRateLimitGet
-*
-* @description: method to get API rate limit of current user
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::accountRateLimitGet
+ *
+ * @description: method to get API rate limit of current user
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::accountRateLimitGet()
 {
     /* Perform GET */
@@ -1104,16 +1104,16 @@ bool twitCurl::accountRateLimitGet()
 }
 
 /*++
-* @method: twitCurl::accountVerifyCredGet
-*
-* @description: method to get information on user identified by given credentials
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::accountVerifyCredGet
+ *
+ * @description: method to get information on user identified by given credentials
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::accountVerifyCredGet()
 {
     /* Perform GET */
@@ -1123,16 +1123,16 @@ bool twitCurl::accountVerifyCredGet()
 }
 
 /*++
-* @method: twitCurl::favoriteGet
-*
-* @description: method to get favorite users' statuses
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::favoriteGet
+ *
+ * @description: method to get favorite users' statuses
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::favoriteGet()
 {
     /* Perform GET */
@@ -1142,16 +1142,16 @@ bool twitCurl::favoriteGet()
 }
 
 /*++
-* @method: twitCurl::favoriteCreate
-*
-* @description: method to favorite a status message
-*
-* @input: statusId - id in string format of the status to be favorited
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::favoriteCreate
+ *
+ * @description: method to favorite a status message
+ *
+ * @input: statusId - id in string format of the status to be favorited
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::favoriteCreate( const std::string& statusId )
 {
     /* Prepare URL */
@@ -1168,16 +1168,16 @@ bool twitCurl::favoriteCreate( const std::string& statusId )
 }
 
 /*++
-* @method: twitCurl::favoriteDestroy
-*
-* @description: method to delete a favorited the status
-*
-* @input: statusId - id in string format of the favorite status to be deleted
-*
-* @output: true if DELETE is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::favoriteDestroy
+ *
+ * @description: method to delete a favorited the status
+ *
+ * @input: statusId - id in string format of the favorite status to be deleted
+ *
+ * @output: true if DELETE is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::favoriteDestroy( const std::string& statusId )
 {
     /* Prepare URL */
@@ -1190,42 +1190,42 @@ bool twitCurl::favoriteDestroy( const std::string& statusId )
 }
 
 /*++
-* @method: twitCurl::blockCreate
-*
-* @description: method to block a user
-*
-* @input: userInfo - user id or screen name who needs to be blocked
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::blockCreate
+ *
+ * @description: method to block a user
+ *
+ * @input: userInfo - user id or screen name who needs to be blocked
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::blockCreate( const std::string& userInfo )
 {
-        /* Prepare URL */
-        std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
-                               twitterDefaults::TWITCURL_BLOCKSCREATE_URL + userInfo +
-                               twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
+    /* Prepare URL */
+    std::string buildUrl = twitCurlDefaults::TWITCURL_PROTOCOLS[m_eProtocolType] +
+                           twitterDefaults::TWITCURL_BLOCKSCREATE_URL + userInfo +
+                           twitCurlDefaults::TWITCURL_EXTENSIONFORMATS[m_eApiFormatType];
 
-        /* Send some dummy data in POST */
-        std::string dummyData = twitCurlDefaults::TWITCURL_TEXTSTRING +
-                                urlencode( std::string( "dummy" ) );
+    /* Send some dummy data in POST */
+    std::string dummyData = twitCurlDefaults::TWITCURL_TEXTSTRING +
+                            urlencode( std::string( "dummy" ) );
 
-        /* Perform POST */
-        return performPost( buildUrl, dummyData );
+    /* Perform POST */
+    return performPost( buildUrl, dummyData );
 }
 
 /*++
-* @method: twitCurl::blockDestroy
-*
-* @description: method to unblock a user
-*
-* @input: userInfo - user id or screen name who need to unblocked
-*
-* @output: true if DELETE is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::blockDestroy
+ *
+ * @description: method to unblock a user
+ *
+ * @input: userInfo - user id or screen name who need to unblocked
+ *
+ * @output: true if DELETE is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::blockDestroy( const std::string& userInfo )
 {
     /* Prepare URL */
@@ -1238,19 +1238,19 @@ bool twitCurl::blockDestroy( const std::string& userInfo )
 }
 
 /*++
-* @method: twitCurl::blockListGet
-*
-* @description: method to get list of users blocked by authenticated user
-*
-* @input: includeEntities - indicates whether or not to include 'entities' node
-*         skipStatus - indicates whether or not to include status for returned users
-*         nextCursor - next cursor string returned from a previous call
-*                      to this API, otherwise an empty string
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::blockListGet
+ *
+ * @description: method to get list of users blocked by authenticated user
+ *
+ * @input: includeEntities - indicates whether or not to include 'entities' node
+ *         skipStatus - indicates whether or not to include status for returned users
+ *         nextCursor - next cursor string returned from a previous call
+ *                      to this API, otherwise an empty string
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::blockListGet( const std::string& nextCursor, const bool includeEntities, const bool skipStatus )
 {
     /* Prepare URL */
@@ -1289,19 +1289,19 @@ bool twitCurl::blockListGet( const std::string& nextCursor, const bool includeEn
 }
 
 /*++
-* @method: twitCurl::blockIdsGet
-*
-* @description: method to get list of IDs blocked by authenticated user
-*
-* @input: stringifyIds - indicates whether or not returned ids should
-*                        be in string format
-*         nextCursor - next cursor string returned from a previous call
-*                      to this API, otherwise an empty string
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::blockIdsGet
+ *
+ * @description: method to get list of IDs blocked by authenticated user
+ *
+ * @input: stringifyIds - indicates whether or not returned ids should
+ *                        be in string format
+ *         nextCursor - next cursor string returned from a previous call
+ *                      to this API, otherwise an empty string
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::blockIdsGet( const std::string& nextCursor, const bool stringifyIds )
 {
     /* Prepare URL */
@@ -1332,16 +1332,16 @@ bool twitCurl::blockIdsGet( const std::string& nextCursor, const bool stringifyI
 }
 
 /*++
-* @method: twitCurl::savedSearchGet
-*
-* @description: gets authenticated user's saved search queries.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::savedSearchGet
+ *
+ * @description: gets authenticated user's saved search queries.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::savedSearchGet( )
 {
     /* Perform GET */
@@ -1351,17 +1351,17 @@ bool twitCurl::savedSearchGet( )
 }
 
 /*++
-* @method: twitCurl::savedSearchShow
-*
-* @description: method to retrieve the data for a saved search owned by the authenticating user
-*               specified by the given id.
-*
-* @input: searchId - id in string format of the search to be displayed
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::savedSearchShow
+ *
+ * @description: method to retrieve the data for a saved search owned by the authenticating user
+ *               specified by the given id.
+ *
+ * @input: searchId - id in string format of the search to be displayed
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::savedSearchShow( const std::string& searchId )
 {
     /* Prepare URL */
@@ -1374,16 +1374,16 @@ bool twitCurl::savedSearchShow( const std::string& searchId )
 }
 
 /*++
-* @method: twitCurl::savedSearchCreate
-*
-* @description: creates a saved search for the authenticated user
-*
-* @input: query - the query of the search the user would like to save
-*
-* @output: true if POST is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::savedSearchCreate
+ *
+ * @description: creates a saved search for the authenticated user
+ *
+ * @input: query - the query of the search the user would like to save
+ *
+ * @output: true if POST is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::savedSearchCreate( const std::string& query )
 {
     /* Prepare URL */
@@ -1400,17 +1400,17 @@ bool twitCurl::savedSearchCreate( const std::string& query )
 
 
 /*++
-* @method: twitCurl::savedSearchDestroy
-*
-* @description: method to destroy a saved search for the authenticated user. The search specified
-*               by id must be owned by the authenticating user.
-*
-* @input: searchId - search id of item to be deleted
-*
-* @output: true if DELETE is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::savedSearchDestroy
+ *
+ * @description: method to destroy a saved search for the authenticated user. The search specified
+ *               by id must be owned by the authenticating user.
+ *
+ * @input: searchId - search id of item to be deleted
+ *
+ * @output: true if DELETE is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::savedSearchDestroy( const std::string& searchId )
 {
     /* Prepare URL */
@@ -1424,16 +1424,16 @@ bool twitCurl::savedSearchDestroy( const std::string& searchId )
 
 
 /*++
-* @method: twitCurl::trendsGet()
-*
-* @description: gets trends.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::trendsGet()
+ *
+ * @description: gets trends.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::trendsGet()
 {
     /* Perform GET */
@@ -1444,16 +1444,16 @@ bool twitCurl::trendsGet()
 
 
 /*++
-* @method: twitCurl::trendsDailyGet()
-*
-* @description: gets daily trends.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::trendsDailyGet()
+ *
+ * @description: gets daily trends.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::trendsDailyGet()
 {
     /* Perform GET */
@@ -1463,16 +1463,16 @@ bool twitCurl::trendsDailyGet()
 }
 
 /*++
-* @method: twitCurl::trendsWeeklyGet()
-*
-* @description: gets weekly trends.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::trendsWeeklyGet()
+ *
+ * @description: gets weekly trends.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::trendsWeeklyGet()
 {
     /* Perform GET */
@@ -1482,16 +1482,16 @@ bool twitCurl::trendsWeeklyGet()
 }
 
 /*++
-* @method: twitCurl::trendsCurrentGet()
-*
-* @description: gets current trends.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::trendsCurrentGet()
+ *
+ * @description: gets current trends.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::trendsCurrentGet()
 {
     /* Perform GET */
@@ -1501,16 +1501,16 @@ bool twitCurl::trendsCurrentGet()
 }
 
 /*++
-* @method: twitCurl::trendsAvailableGet()
-*
-* @description: gets available trends.
-*
-* @input: none
-*
-* @output: true if GET is success, otherwise false. This does not check http
-*          response by twitter. Use getLastWebResponse() for that.
-*
-*--*/
+ * @method: twitCurl::trendsAvailableGet()
+ *
+ * @description: gets available trends.
+ *
+ * @input: none
+ *
+ * @output: true if GET is success, otherwise false. This does not check http
+ *          response by twitter. Use getLastWebResponse() for that.
+ *
+ *--*/
 bool twitCurl::trendsAvailableGet()
 {
     /* Perform GET */
@@ -1520,17 +1520,17 @@ bool twitCurl::trendsAvailableGet()
 }
 
 /*++
-* @method: twitCurl::getLastWebResponse
-*
-* @description: method to get http response for the most recent request sent.
-*               twitcurl users need to call this method and parse the XML
-*               data returned by twitter to see what has happened.
-*
-* @input: outWebResp - string in which twitter's response is supplied back to caller
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::getLastWebResponse
+ *
+ * @description: method to get http response for the most recent request sent.
+ *               twitcurl users need to call this method and parse the XML
+ *               data returned by twitter to see what has happened.
+ *
+ * @input: outWebResp - string in which twitter's response is supplied back to caller
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::getLastWebResponse( std::string& outWebResp )
 {
     outWebResp = "";
@@ -1541,17 +1541,17 @@ void twitCurl::getLastWebResponse( std::string& outWebResp )
 }
 
 /*++
-* @method: twitCurl::getLastCurlError
-*
-* @description: method to get cURL error response for most recent http request.
-*               twitcurl users can call this method if any of the APIs return
-*               false.
-*
-* @input: none
-*
-* @output: none
-*
-*--*/
+ * @method: twitCurl::getLastCurlError
+ *
+ * @description: method to get cURL error response for most recent http request.
+ *               twitcurl users can call this method if any of the APIs return
+ *               false.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ *--*/
 void twitCurl::getLastCurlError( std::string& outErrResp )
 {
     m_errorBuffer[twitCurlDefaults::TWITCURL_DEFAULT_BUFFSIZE-1] = twitCurlDefaults::TWITCURL_EOS;
@@ -1559,19 +1559,19 @@ void twitCurl::getLastCurlError( std::string& outErrResp )
 }
 
 /*++
-* @method: twitCurl::curlCallback
-*
-* @description: static method to get http response back from cURL.
-*               this is an internal method, users of twitcurl need not
-*               use this.
-*
-* @input: as per cURL convention.
-*
-* @output: size of data stored in our buffer
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::curlCallback
+ *
+ * @description: static method to get http response back from cURL.
+ *               this is an internal method, users of twitcurl need not
+ *               use this.
+ *
+ * @input: as per cURL convention.
+ *
+ * @output: size of data stored in our buffer
+ *
+ * @remarks: internal method
+ *
+ *--*/
 int twitCurl::curlCallback( char* data, size_t size, size_t nmemb, twitCurl* pTwitCurlObj )
 {
     if( pTwitCurlObj && data )
@@ -1583,19 +1583,19 @@ int twitCurl::curlCallback( char* data, size_t size, size_t nmemb, twitCurl* pTw
 }
 
 /*++
-* @method: twitCurl::saveLastWebResponse
-*
-* @description: method to save http responses. this is an internal method
-*               and twitcurl users need not use this.
-*
-* @input: data - character buffer from cURL,
-*         size - size of character buffer
-*
-* @output: size of data stored in our buffer
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::saveLastWebResponse
+ *
+ * @description: method to save http responses. this is an internal method
+ *               and twitcurl users need not use this.
+ *
+ * @input: data - character buffer from cURL,
+ *         size - size of character buffer
+ *
+ * @output: size of data stored in our buffer
+ *
+ * @remarks: internal method
+ *
+ *--*/
 int twitCurl::saveLastWebResponse(  char*& data, size_t size )
 {
     if( data && size )
@@ -1608,18 +1608,18 @@ int twitCurl::saveLastWebResponse(  char*& data, size_t size )
 }
 
 /*++
-* @method: twitCurl::clearCurlCallbackBuffers
-*
-* @description: method to clear callback buffers used by cURL. this is an
-*               internal method and twitcurl users need not use this.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::clearCurlCallbackBuffers
+ *
+ * @description: method to clear callback buffers used by cURL. this is an
+ *               internal method and twitcurl users need not use this.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::clearCurlCallbackBuffers()
 {
     m_callbackData = "";
@@ -1627,19 +1627,19 @@ void twitCurl::clearCurlCallbackBuffers()
 }
 
 /*++
-* @method: twitCurl::prepareCurlProxy
-*
-* @description: method to set proxy details into cURL. this is an internal method.
-*               twitcurl users should not use this method, instead use setProxyXxx
-*               methods to set proxy server information.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::prepareCurlProxy
+ *
+ * @description: method to set proxy details into cURL. this is an internal method.
+ *               twitcurl users should not use this method, instead use setProxyXxx
+ *               methods to set proxy server information.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::prepareCurlProxy()
 {
     if( m_curlProxyParamsSet )
@@ -1673,19 +1673,19 @@ void twitCurl::prepareCurlProxy()
 }
 
 /*++
-* @method: twitCurl::prepareCurlProxy
-*
-* @description: method to set proxy details into cURL. this is an internal method.
-*               twitcurl users should not use this method, instead use setProxyXxx
-*               methods to set proxy server information.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::prepareCurlProxy
+ *
+ * @description: method to set proxy details into cURL. this is an internal method.
+ *               twitcurl users should not use this method, instead use setProxyXxx
+ *               methods to set proxy server information.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::prepareCurlInterface()
 {
     if( m_curlInterfaseParamSet )
@@ -1695,7 +1695,7 @@ void twitCurl::prepareCurlInterface()
 
     /* Reset existing interface details in cURL */
     curl_easy_setopt( m_curlHandle, CURLOPT_INTERFACE, NULL );
-    
+
     if( m_Interface.length() ){
         /* Set interface details in cURL */
         curl_easy_setopt( m_curlHandle, CURLOPT_INTERFACE, m_Interface.c_str() );
@@ -1705,18 +1705,18 @@ void twitCurl::prepareCurlInterface()
 }
 
 /*++
-* @method: twitCurl::prepareCurlCallback
-*
-* @description: method to set callback details into cURL. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::prepareCurlCallback
+ *
+ * @description: method to set callback details into cURL. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::prepareCurlCallback()
 {
     if( m_curlCallbackParamsSet )
@@ -1736,19 +1736,19 @@ void twitCurl::prepareCurlCallback()
 }
 
 /*++
-* @method: twitCurl::prepareCurlUserPass
-*
-* @description: method to set twitter credentials into cURL. this is an internal method.
-*               twitcurl users should not use this method, instead use setTwitterXxx
-*               methods to set twitter username and password.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::prepareCurlUserPass
+ *
+ * @description: method to set twitter credentials into cURL. this is an internal method.
+ *               twitcurl users should not use this method, instead use setTwitterXxx
+ *               methods to set twitter username and password.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::prepareCurlUserPass()
 {
     if( m_curlLoginParamsSet )
@@ -1774,18 +1774,18 @@ void twitCurl::prepareCurlUserPass()
 }
 
 /*++
-* @method: twitCurl::prepareStandardParams
-*
-* @description: method to set standard params into cURL. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: none
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::prepareStandardParams
+ *
+ * @description: method to set standard params into cURL. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: none
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void twitCurl::prepareStandardParams()
 {
     /* Restore any custom request we may have */
@@ -1811,18 +1811,18 @@ void twitCurl::prepareStandardParams()
 }
 
 /*++
-* @method: twitCurl::performGet
-*
-* @description: method to send http GET request. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: getUrl - url
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::performGet
+ *
+ * @description: method to send http GET request. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: getUrl - url
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 bool twitCurl::performGet( const std::string& getUrl )
 {
     /* Return if cURL is not initialized */
@@ -1870,18 +1870,18 @@ bool twitCurl::performGet( const std::string& getUrl )
 }
 
 /*++
-* @method: twitCurl::performGetInternal
-*
-* @description: method to send http GET request. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: const std::string& getUrl, const std::string& oAuthHttpHeader
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::performGetInternal
+ *
+ * @description: method to send http GET request. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: const std::string& getUrl, const std::string& oAuthHttpHeader
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 bool twitCurl::performGetInternal( const std::string& getUrl,
                                    const std::string& oAuthHttpHeader )
 {
@@ -1927,18 +1927,18 @@ bool twitCurl::performGetInternal( const std::string& getUrl,
 }
 
 /*++
-* @method: twitCurl::performDelete
-*
-* @description: method to send http DELETE request. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: deleteUrl - url
-*
-* @output: none
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: twitCurl::performDelete
+ *
+ * @description: method to send http DELETE request. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: deleteUrl - url
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *
+ *--*/
 bool twitCurl::performDelete( const std::string& deleteUrl )
 {
     /* Return if cURL is not initialized */
@@ -1987,21 +1987,21 @@ bool twitCurl::performDelete( const std::string& deleteUrl )
 }
 
 /*++
-* @method: twitCurl::performPost
-*
-* @description: method to send http POST request. this is an internal method.
-*               twitcurl users should not use this method.
-*
-* @input: postUrl - url,
-*         dataStr - url encoded data to be posted
-*
-* @output: none
-*
-* @remarks: internal method
-*           data value in dataStr must already be url encoded.
-*           ex: dataStr = "key=urlencode(value)"
-*
-*--*/
+ * @method: twitCurl::performPost
+ *
+ * @description: method to send http POST request. this is an internal method.
+ *               twitcurl users should not use this method.
+ *
+ * @input: postUrl - url,
+ *         dataStr - url encoded data to be posted
+ *
+ * @output: none
+ *
+ * @remarks: internal method
+ *           data value in dataStr must already be url encoded.
+ *           ex: dataStr = "key=urlencode(value)"
+ *
+ *--*/
 bool twitCurl::performPost( const std::string& postUrl, std::string dataStr )
 {
     /* Return if cURL is not initialized */
@@ -2052,20 +2052,20 @@ bool twitCurl::performPost( const std::string& postUrl, std::string dataStr )
 }
 
 /*++
-* @method: utilMakeCurlParams
-*
-* @description: utility function to build parameter strings in the format
-*               required by cURL ("param1:param2"). twitcurl users should
-*               not use this function.
-*
-* @input: inParam1 - first parameter,
-*         inParam2 - second parameter
-*
-* @output: outStr - built parameter
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: utilMakeCurlParams
+ *
+ * @description: utility function to build parameter strings in the format
+ *               required by cURL ("param1:param2"). twitcurl users should
+ *               not use this function.
+ *
+ * @input: inParam1 - first parameter,
+ *         inParam2 - second parameter
+ *
+ * @output: outStr - built parameter
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void utilMakeCurlParams( std::string& outStr, const std::string& inParam1, const std::string& inParam2 )
 {
     outStr = inParam1;
@@ -2073,20 +2073,20 @@ void utilMakeCurlParams( std::string& outStr, const std::string& inParam1, const
 }
 
 /*++
-* @method: utilMakeUrlForUser
-*
-* @description: utility function to build url compatible to twitter. twitcurl
-*               users should not use this function.
-*
-* @input: baseUrl - base twitter url,
-*         userInfo - user name,
-*         isUserId - indicates if userInfo contains a user id or scree name
-*
-* @output: outUrl - built url
-*
-* @remarks: internal method
-*
-*--*/
+ * @method: utilMakeUrlForUser
+ *
+ * @description: utility function to build url compatible to twitter. twitcurl
+ *               users should not use this function.
+ *
+ * @input: baseUrl - base twitter url,
+ *         userInfo - user name,
+ *         isUserId - indicates if userInfo contains a user id or scree name
+ *
+ * @output: outUrl - built url
+ *
+ * @remarks: internal method
+ *
+ *--*/
 void utilMakeUrlForUser( std::string& outUrl, const std::string& baseUrl, const std::string& userInfo, const bool isUserId )
 {
     /* Copy base URL */
@@ -2109,32 +2109,32 @@ void utilMakeUrlForUser( std::string& outUrl, const std::string& baseUrl, const 
 }
 
 /*++
-* @method: twitCurl::getOAuth
-*
-* @description: method to get a reference to oAuth object.
-*
-* @input: none
-*
-* @output: reference to oAuth object
-*
-*--*/
+ * @method: twitCurl::getOAuth
+ *
+ * @description: method to get a reference to oAuth object.
+ *
+ * @input: none
+ *
+ * @output: reference to oAuth object
+ *
+ *--*/
 oAuth& twitCurl::getOAuth()
 {
     return m_oAuth;
 }
 
 /*++
-* @method: twitCurl::oAuthRequestToken
-*
-* @description: method to get a request token key and secret. this token
-*               will be used to get authorize user and get PIN from twitter
-*
-* @input: authorizeUrl is an output parameter. this method will set the url
-*         in this string. user should visit this link and get PIN from that page.
-*
-* @output: true if everything went sucessfully, otherwise false
-*
-*--*/
+ * @method: twitCurl::oAuthRequestToken
+ *
+ * @description: method to get a request token key and secret. this token
+ *               will be used to get authorize user and get PIN from twitter
+ *
+ * @input: authorizeUrl is an output parameter. this method will set the url
+ *         in this string. user should visit this link and get PIN from that page.
+ *
+ * @output: true if everything went sucessfully, otherwise false
+ *
+ *--*/
 bool twitCurl::oAuthRequestToken( std::string& authorizeUrl /* out */ )
 {
     /* Return if cURL is not initialized */
@@ -2177,15 +2177,15 @@ bool twitCurl::oAuthRequestToken( std::string& authorizeUrl /* out */ )
 }
 
 /*++
-* @method: twitCurl::oAuthAccessToken
-*
-* @description: method to exchange request token with access token
-*
-* @input: none
-*
-* @output: true if everything went sucessfully, otherwise false
-*
-*--*/
+ * @method: twitCurl::oAuthAccessToken
+ *
+ * @description: method to exchange request token with access token
+ *
+ * @input: none
+ *
+ * @output: true if everything went sucessfully, otherwise false
+ *
+ *--*/
 bool twitCurl::oAuthAccessToken()
 {
     /* Return if cURL is not initialized */
@@ -2217,17 +2217,17 @@ bool twitCurl::oAuthAccessToken()
 }
 
 /*++
-* ADDED BY ANTIROOT
-*
-* @method: twitCurl::oAuthHandlePIN
-*
-* @description: method to handle user's PIN code from the authentiation URLs
-*
-* @input: none
-*
-* @output: true if everything went sucessfully, otherwise false
-*
-*--*/
+ * ADDED BY ANTIROOT
+ *
+ * @method: twitCurl::oAuthHandlePIN
+ *
+ * @description: method to handle user's PIN code from the authentiation URLs
+ *
+ * @input: none
+ *
+ * @output: true if everything went sucessfully, otherwise false
+ *
+ *--*/
 bool twitCurl::oAuthHandlePIN( const std::string& authorizeUrl /* in */ )
 {
     /* Return if cURL is not initialized */
@@ -2316,13 +2316,13 @@ bool twitCurl::oAuthHandlePIN( const std::string& authorizeUrl /* in */ )
     prepareStandardParams();
 
     /*
-    Now, we need to make a data string for POST operation
-    which includes oauth token, authenticity token, username, password.
-    */
+     Now, we need to make a data string for POST operation
+     which includes oauth token, authenticity token, username, password.
+     */
     dataStr = oAuthLibDefaults::OAUTHLIB_TOKEN_KEY + "=" + oauthTokenVal + "&" +                      \
-              oAuthLibDefaults::OAUTHLIB_AUTHENTICITY_TOKEN_KEY + "=" + authenticityTokenVal + "&" +  \
-              oAuthLibDefaults::OAUTHLIB_SESSIONUSERNAME_KEY + "=" + getTwitterUsername() + "&" +     \
-              oAuthLibDefaults::OAUTHLIB_SESSIONPASSWORD_KEY + "=" + getTwitterPassword();
+    oAuthLibDefaults::OAUTHLIB_AUTHENTICITY_TOKEN_KEY + "=" + authenticityTokenVal + "&" +  \
+    oAuthLibDefaults::OAUTHLIB_SESSIONUSERNAME_KEY + "=" + getTwitterUsername() + "&" +     \
+    oAuthLibDefaults::OAUTHLIB_SESSIONPASSWORD_KEY + "=" + getTwitterPassword();
 
     /* Set OAuth header */
     m_oAuth.getOAuthHeader( eOAuthHttpPost, authorizeUrl, dataStr, oAuthHttpHeader );
